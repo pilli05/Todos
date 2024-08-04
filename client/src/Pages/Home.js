@@ -4,6 +4,8 @@ import { toast } from "react-toastify";
 import { MdEdit } from "react-icons/md";
 import { MdDeleteOutline } from "react-icons/md";
 import axios from "axios";
+import { FaUserCircle } from "react-icons/fa";
+import { AiOutlineLogout } from "react-icons/ai";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -136,17 +138,29 @@ const Home = () => {
   };
 
   return (
-    <div className="h-[100vh] w-[100vw]">
-      <navbar className="flex justify-between items-center bg-slate-100 p-5 shadow">
-        <h1 className="font-semibold">TODOS</h1>
-        <div>
-          <span className="text-gray-700">{userName}</span>
-          <button
-            className="ml-2 hover:bg-blue-600 p-2 hover:text-white rounded text-blue-600 font-semibold"
+    <div className="h-[100vh] w-[100vw] home-container">
+      <navbar className="flex justify-between items-center bg-slate-100 p-3 shadow">
+        <img
+          src="https://res.cloudinary.com/djoz0tmyl/image/upload/v1722776711/todo_fyy06t.png"
+          alt="todo-logo"
+          className="w-[100px]"
+        />
+        <div className="flex items-center">
+          <div className="flex items-center">
+            <FaUserCircle
+              className="mr-2 items-center"
+              size={25}
+              color="green"
+            />
+            <span className="text-gray-700">{userName}</span>
+          </div>
+
+          <AiOutlineLogout
             onClick={handleLogout}
-          >
-            Logout
-          </button>
+            size={25}
+            color="red"
+            className="ml-5 cursor-pointer"
+          />
         </div>
       </navbar>
       {showAddTodo ? (
@@ -216,13 +230,13 @@ const Home = () => {
         </form>
       ) : (
         <>
-          <h1 className="font-bold text-2xl text-blue-800 text-center mt-10">
+          <h1 className="font-bold text-2xl text-green-600 text-center mt-10">
             Welcome to TODOS DASHBOARD
           </h1>
           <div className="flex flex-col items-center mt-10">
             <div className="w-[85%] m-3 flex justify-end">
               <button
-                className="bg-blue-600 p-2 text-white rounded  border-2 font-semibold self-end"
+                className="bg-blue-600 p-2 text-white rounded-lg  border-2 font-semibold self-end"
                 onClick={handleAddTodo}
               >
                 Add TODO
